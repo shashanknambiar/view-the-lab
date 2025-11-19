@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Make body NOT scrollable - .content will scroll */
+    overflow: hidden;
+    background: linear-gradient(180deg, #3A5266 21%, #908585 88%);
+    background-attachment: fixed;
+    font-family: "Inter", monospace;
+}
+
+/*Navigation bar*/
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15vw;
+    /* change here if you prefer 10vw */
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* allow clicks to pass through to SVG children only */
+}
+
+.sidebar svg {
+    pointer-events: auto;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+
+.waypoint {
+    cursor: pointer;
+}
+
+text {
+    font-family: "Inter", 'Courier New', Courier, monospace
+}
+
+.content {
+    margin-left: 15vw;
+    /* same as .sidebar width */
+    height: 100vh;
+    /* crucial: the scroll container must be viewport-height */
+    overflow-y: auto;
+    /* this is where scrolling happens */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* smooth scrolling on iOS */
+}
+
+/* Each hero section is full screen height */
+  .hero {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  

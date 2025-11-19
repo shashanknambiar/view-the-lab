@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shashank Namabiar</title>
+    <title>Shashank Nambiar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
 </head>
+
 <body>
-    <h1>Hi! Welcome to this space :)</h1>
+    <div class="sidebar">
+        <svg id="svg" width="10vw" height="100vh" style="padding: none; margin:none; overflow: visible; " viewBox="0 0 133 1025">
+            <!-- The curved navigation path -->
+            <path id="navPath"
+                d="M27.131 0.332443C27.131 0.332443 105.952 88.3704 114.131 158.332C124.585 247.757 32.9021 281.984 27.131 371.832C19.7536 486.689 155.131 548.332 129.131 648.332C103.131 748.332 36.1402 691.469 9.13097 803.332C-17.8783 915.196 27.131 1024.33 27.131 1024.33"
+                stroke="white" fill="none" />
+            <!-- Waypoint circles -->
+            <circle class="waypoint" data-target="hero1" data-pos="0.15" r="6" fill="#D9D9D9" />
+            <text id="wp1Label" data-target="hero1" fill="white" font-size="15">Home</text>
+            <circle class="waypoint" data-target="hero2" data-pos="0.35" r="6" fill="#D9D9D9" />
+            <text id="wp2Label" data-target="hero2" fill="white" font-size="15">ROS2</text>
+            <circle class="waypoint" data-target="hero3" data-pos="0.55" r="6" fill="#D9D9D9" />
+            <text id="wp3Label" data-target="hero3" fill="white" font-size="15">Control System</text>
+            <circle class="waypoint" data-target="hero4" data-pos="0.8" r="6" fill="#D9D9D9" />
+            <text id="wp4Label" data-target="hero4" fill="white" font-size="15">Generative Art</text>
+            <circle class="waypoint" data-target="hero5" data-pos="0.9" r="6" fill="#D9D9D9" />
+            <text id="wp5Label" data-target="hero5" fill="white" font-size="15">:)</text>
+            <!-- Movable dot -->
+            <circle id="dot" r="8" fill="#FFCF10" />
+        </svg>
+
+    </div>
+    <div class="content">
+        <section id="hero1" class="hero"><text>Hi I’m Shashank, Welcome to this space. 
+I believe in learning by building and here are the few projects that has helped me understand things better. Enjoy :)  </text></section>
+        <section id="hero2" class="hero">Hero Section 2</section>
+        <section id="hero3" class="hero">Hero Section 3</section>
+        <section id="hero4" class="hero">Hero Section 4</section>
+        <section id="hero5" class="hero">Hero Section 5</section>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
