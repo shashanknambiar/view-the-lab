@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 * {
     box-sizing: border-box;
 }
@@ -20,14 +22,12 @@ body {
     left: 0;
     top: 0;
     width: 15vw;
-    /* change here if you prefer 10vw */
     height: 100vh;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    /* allow clicks to pass through to SVG children only */
 }
 
 .sidebar svg {
@@ -46,23 +46,10 @@ text {
     font-family: "Inter", 'Courier New', Courier, monospace
 }
 
-.content {
-    margin-left: 15vw;
-    /* same as .sidebar width */
-    height: 100vh;
-    /* crucial: the scroll container must be viewport-height */
-    overflow-y: auto;
-    /* this is where scrolling happens */
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    /* smooth scrolling on iOS */
-}
-
 /* Each hero section is full screen height */
   .hero {
     height: 100vh;
-    scroll-snap-align: start;
+    scroll-snap-align: end;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,4 +58,17 @@ text {
     color: white;
   }
 
+
+  .about-box{
+    --mx: 0px; 
+    --my: 0px;
+  }
+
+  .about-box:hover {
+    cursor: pointer;
+  box-shadow:
+    inset var(--mx) var(--my) 5px rgba(255, 255, 255, 0.35),
+    inset calc(var(--mx) * 0.8) calc(var(--my) * 0.8) 9px rgba(255, 255, 255, 0.25),
+    inset calc(var(--mx) * 1.1) calc(var(--my) * 1.1) 20px rgba(255, 255, 255, 0.15);
+}
   
