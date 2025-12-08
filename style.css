@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    color: var(--color-gray-100)
 }
 
 html,
@@ -23,11 +24,10 @@ body {
     top: 0;
     width: 15vw;
     height: 100vh;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     pointer-events: none;
+    /* transform: rotate(-90deg);
+    left: 40%;
+    top: -40%; */
 }
 
 .sidebar svg {
@@ -46,17 +46,6 @@ text {
     font-family: "Inter", 'Courier New', Courier, monospace
 }
 
-/* Each hero section is full screen height */
-  .hero {
-    height: 100vh;
-    scroll-snap-align: end;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    color: white;
-  }
 
 
   .about-box{

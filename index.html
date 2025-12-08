@@ -38,19 +38,137 @@
             <circle id="dot" r="8" fill="#FFCF10" />
         </svg>
     </div>
-    <div class="about-box fixed top-6 right-6 flex flex-row m-2 p-2 rounded-4xl border-2 border-gray-300 justify-center items-center">
-           <img src="assets/profilepicture_pixel.png" alt="profile" class="max-h-7 mr-2">
-            <p style="color: white;">About Me</p>
-        </div>
+    <div
+        class="about-box fixed top-6 right-6 flex flex-row m-2 p-2 rounded-4xl border-2 border-gray-300 justify-center items-center">
+        <img src="assets/profilepicture_pixel.png" alt="profile" class="max-h-7 mr-2">
+        <p style="color: white;">About Me</p>
     </div>
-    <div class="content max-h-screen ml-[17vw] h-screen overflow-y-auto snap-y snap-mandatory scroll-behavior: smooth; overflow-touch">
-        <section id="hero1" class="hero"><text>Hi I’m Shashank, Welcome to this space.
-                I believe in learning by building and here are the few projects that has helped me understand things
-                better. Enjoy :) </text></section>
-        <section id="hero2" class="hero">Hero Section 2</section>
-        <section id="hero3" class="hero">Hero Section 3</section>
-        <section id="hero4" class="hero">Hero Section 4</section>
-        <section id="hero5" class="hero">Hero Section 5</section>
+
+    <div
+        class="content max-h-screen ml-[17vw] h-screen overflow-y-auto snap-y snap-mandatory scroll-behavior: smooth; overflow-touch">
+        <section id="hero1"
+            class="hero h-screen flex justify-center items-center text-4xl lg:text-5xl 2xl:text-7xl text-gray-100 font-bold snap-end">
+            <text>Hi, I’m Shashank. Welcome to this space!
+                I believe in learning by building and here are a few projects that has helped me understand things
+                better 🤖 </text>
+        </section>
+        <section id="hero2" class="hero h-screen snap-end">
+            <div class="h-1/12 w-full"></div>
+            <p class="text-2xl md:text-4xl xl:text-6xl  2xl:text-8xl font-bold mb-7 mt-2 2xl:mb-12">Control System</p>
+            <div>
+                <div class="flex flex-wrap flex-row ld:flex-col gap-4 mr-2">
+                    <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <div class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 bg-[rgba(217,217,217)] flex justify-center items-center overflow-clip rounded-xl">
+                            <img src="assets/Balance.png" alt="PID Balance sketch" />
+                        </div>
+
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-m 2xl:text-3xl font-semibold">
+                            PID: Ball balance
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                            A basic setup utilizes a servo for actuation and an ultrasonic sensor for feedback to demonstrate the implementation of a PID controller, which maintains a ball at a desired position on the bridge.
+                        </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <div class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 bg-[rgba(217,217,217)] flex justify-center items-center overflow-clip rounded-xl">
+                            <img src="assets/motor_dc.png" alt="DC Motor" class="scale-[0.5]" />
+                        </div>
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-lg 2xl:text-3xl font-semibold">
+                            Auto PID: DC Position control  
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                            Autotuning PID loop for DC motor position control, using a low-cost quadrature encoder for closed-loop feedback.
+                        </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <div class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 bg-[rgba(217,217,217)] flex justify-center items-center overflow-clip rounded-xl">
+                            <img src="assets/motor_bldc.png" alt="BLDC Motor" class="scale-[0.5]" />
+                        </div>
+
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-lg 2xl:text-3xl font-semibold">
+                            FOC based BLDC position control
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                            A BLDC motor driver implements field-oriented control (FOC) to achieve high-precision position control.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="hero3" class="hero h-screen snap-end">
+            <div class="h-1/12 w-full"></div>
+            <p class="text-2xl md:text-4xl xl:text-6xl  2xl:text-8xl font-bold mb-7 mt-2 2xl:mb-12">ROS2</p>
+            <div>
+                <div class="flex flex-wrap flex-row ld:flex-col gap-4 mr-2">
+                    <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <img src="assets/TurtleSimIcon.png" alt="ROS2 Simulations: Turtle Sim"
+                            class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 object-cover" />
+
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-m 2xl:text-3xl font-semibold">
+                            Turtle Sim: Leo Says Hi.
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                            A toy project to understand ROS2 and its functionalities.
+                        </p>
+                        </div>
+                    </div>
+                     <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <img src="assets/SLAM.png" alt="ROS2 Simulations: Turtle Sim"
+                            class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 object-cover" />
+
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-m 2xl:text-3xl font-semibold">
+                            SLAM
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                            A self-balancing two-wheeled robot equipped with SLAM for autonomous navigation.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="hero4" class="hero h-screen snap-end">
+            <div class="h-1/12 w-full"></div>
+            <p class="text-2xl md:text-4xl xl:text-6xl  2xl:text-8xl font-bold mb-7 mt-2 2xl:mb-12">Generative Art [*.p5js]</p>
+            <div>
+                <div class="flex flex-wrap flex-row ld:flex-col gap-4 mr-2">
+                    <div
+                        class="flex flex-row lg:flex-col items-center text-left lg:text-center card-grey p-4 rounded-xl bg-[rgba(217,217,217,0.25)]">
+                        <img src="assets/fourier_transform.png" alt="ROS2 Simulations: Turtle Sim"
+                            class="w-24 h-24 lg:w-70 lg:h-55 2xl:w-100 2xl:h-85 object-cover" />
+
+                        <p class="ml-4 lg:ml-0 lg:mt-4 text-white text-m 2xl:text-3xl font-semibold">
+                            Fourier Transform Visualizer
+                        </p>
+                        <div class="hidden lg:flex lg:w-70 lg:h-30 2xl:w-100 2xl:h-40 flex-col text-left mt-3 mb-3">
+                            <p>
+                                A visual tool that converts an SVG into its Fourier series and reconstructs it using animated epicycles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="hero5" class="hero h-screen snap-end">
+            <div class="h-1/12 w-full"></div>
+            <p class="text-2xl md:text-4xl lg:text-6xl font-bold">Archives</p>
+            <div class="flex flex-wrap">
+                <div class="flex justify-center items-center"></div>
+            </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>
