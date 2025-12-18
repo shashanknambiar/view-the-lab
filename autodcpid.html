@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank Nambiar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="tailwind.css">
+</head>
+
+<body class="h-screen">
+    <a href="./index.html">
+        <div
+            class="about-box fixed top-1 left-1 flex flex-row m-2 p-2 rounded-4xl border-2 border-gray-300 justify-center items-center w-24">
+            <p>Back</p>
+        </div>
+    </a>
+    <div class="flex flex-col w-full h-full overflow-y-auto">
+        <div class="h-20 w-96 mt-20 ml-10">
+
+        </div>
+        <div class="m-10 flex flex-col justify-center gap-3">
+            <div class="flex gap-2">
+                <p class="text-2xl lg:text-4xl xl:text-6xl font-bold mb-4">Auto PID: DC Motor Position control</p>
+                <a href="https://github.com/shashanknambiar/PID_DC" target="_blank">
+                    <img src="assets/logos/git.png" alt="GitHub" class="w-8">
+                </a>
+            </div>
+
+            <p>This project implements a cascaded control system for a DC motor using a low-cost quadrature encoder. The
+                control architecture consists of a fast inner velocity loop and a slower outer position loop, with
+                automated tuning and noise mitigation strategies to ensure stable operation. The system can operate in
+                velocity control mode or position control mode, depending on the application.</p>
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Hardware</p>
+            <p>Atmega328p as the micro controller, Double BTS7960 H-Bridge Motor driver, an encoder wiht 12PPM and DC
+                motor that operates at 24V</p>
+            <p class="text-2xl font-bold underline underline-offset-6">Inital problems (Noise from encoder)</p>
+            <p>The feedback came from a cheap quadrature encoder. Perfect on paper. Noisy in practice.
+
+                Position was sampled every 20 ms (50 Hz), which is plenty fast, but raw encoder counts had a habit of
+                jumping by a count or two. That’s all it takes to make a velocity estimate jitter.
+                So the signal from this encoder was cleaned up using a 3-sample median filter to remove jitter, then
+                further
+                smoothed with an exponential moving average.
+                Here are the results of the encoder reading after smoothening.</p>
+            <div class="flex items-center justify-center w-full">
+                <div class="flex flex-col items-center gap-2 w-full">
+                    <img src="assets/PID_DC/Measured RPM vs. Time Before filtering.png"
+                        alt="block diagram of the control loop" class="w-3/4 lg:w-1/2">
+                    <p class="text-xs">Encoder reading before noise reduction</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-full">
+                    <img src="assets/PID_DC/Measured RPM vs. Time after filtering.png"
+                        alt="block diagram of the control loop" class="w-3/4 lg:w-1/2">
+                    <p class="text-xs">Encoder reading after noise reduction</p>
+                </div>
+
+            </div>
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Velocity Control and auto tuning it</p>
+            <p>The velocity loop runs every 30 ms (≈33 Hz) and sits closest to the hardware. This loop tries to maintain
+                the set speed despite varying load and other factors, such as friction.</p>
+            <p>Since manual tuning is time-consuming and prone to error, the velocity loop is tuned using a step-input
+                auto-tuning approach. A step input is applied, and the motor’s response is recorded. From that curve the
+                system gain (K) comes from the steady-state response and time constant (τ) comes from how fast the motor
+                reacts. With those two numbers, the motor is modeled as a first-order system, and Internal Model Control
+                (IMC) rules take over. Out come Kp, Ki, and Kd are calculated.
+                The result is a velocity loop that settles quickly and doesn’t overreact when load changes.</p>
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-col items-center gap-2 w-full">
+                    <img src="assets/PID_DC/DCMootorPIDVelocity.drawio.png"
+                        alt="block diagram of the velocity control loop" class="w-3/4 lg:w-1/2">
+                    <p class="text-xs">Velocity control loop</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-full">
+                    <img src="assets/PID_DC/VelocityResponse.png" alt="block diagram of the velocity control loop"
+                        class="w-3/4 lg:w-1/2">
+                    <p class="text-xs">Velocity response of the motor after tuning</p>
+                </div>
+            </div>
+
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Cascaded Control Loops: From Velocity
+                to Position Control</p>
+            <p>With velocity under control, position becomes much easier.
+
+                The position loop runs slower, every 60 ms (≈16.7 Hz), and outputs a velocity command rather than
+                driving the motor directly. In this cascaded control has the outer loop thinks in terms of where,
+                the inner loop worries about how fast.<br />
+
+                Because the velocity loop already behaves like a clean first-order system, the position controller can
+                be tuned using the same K and τ values found earlier. No extra experiments are required.
+
+                Bandwidths stay separated, oscillations stay away, and the motor moves to the desired position.
+            </p>
+            <div class="flex flex-col items-center gap-2">
+                <img src="assets/PID_DC/PosResponse.png" alt="Block diagram of the cascaded control loop" class="w-1/2">
+                <p class="text-xs">Output response of the position control loop</p>
+            </div>
+            <p>Having an option to set control modes allows the loop to run in velocity control or position control
+                mode. The following block diagram shows the same.</p>
+            <div class="flex flex-col items-center gap-2">
+                <img src="assets/PID_DC/DC Motor Control Loop.jpg" alt="Block diagram of the cascaded control loop"
+                    class="w-3/4">
+                <p class="text-xs">Block diagram of the control loop.</p>
+            </div>
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Conclusion</p>
+            <p>The key points are that accurate measurements matter as much as good controllers. Tuning the inner loop
+                first makes later steps simpler. Model-based auto-tuning eliminates the guesswork and delivers
+                consistent results. Most importantly, breaking the control problem into separate loops makes systems
+                easier to tune, understand, and trust in practice.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>
