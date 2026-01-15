@@ -286,6 +286,9 @@
   .h-24 {
     height: calc(var(--spacing) * 24);
   }
+  .h-fit {
+    height: fit-content;
+  }
   .h-full {
     height: 100%;
   }
@@ -303,6 +306,9 @@
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
+  }
+  .w-1\/4 {
+    width: calc(1/4 * 100%);
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -336,6 +342,9 @@
   }
   .w-96 {
     width: calc(var(--spacing) * 96);
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;
