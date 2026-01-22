@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank Nambiar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="tailwind.css">
+</head>
+
+<body class="h-screen">
+    <div class="flex flex-col w-full h-full overflow-y-auto">
+        <a href="./index.html">
+            <div
+                class="about-box relative top-1 left-1 flex flex-row m-2 p-2 rounded-4xl border-2 border-gray-300 justify-center items-center w-24">
+                <p>Back</p>
+            </div>
+        </a>
+        <div class="m-10 flex flex-col justify-center gap-3">
+            <div class="flex gap-2">
+                <p class="text-2xl lg:text-4xl xl:text-6xl font-bold mb-4">Ball and Beam Experiment</p>
+
+            </div>
+            <p>This project implements a Ball and Beam control system to study the end-to-end development of a PID
+                controller, from mathematical modeling and simulation to real-time embedded implementation. The
+                objective was to analyze controller behavior, limitations of physical systems, and discrepancies between
+                ideal models and real-world execution.</p>
+            <div class="flex gap-2 items-center">
+
+                <p class="text-base font-bold ">Repositry: </p>
+                <a href="https://github.com/shashanknambiar/Ball-And-Beam-System" target="_blank">
+                    <img src="assets/logos/git.png" alt="GitHub" class="w-8">
+                </a>
+            </div>
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Hardware Setup</p>
+            <div>
+                <ul>
+                    <li>US100 ultrasonic sensor for ball position measurement</li>
+                    <li>MG996R servo motor for beam actuation</li>
+                    <li>Arduino Mega for real-time control execution</li>
+                </ul>
+            </div>
+            <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Mechanical Design</p>
+            <p>All mechanical components were designed in Fusion 360 and fabricated using 3D printing. The design
+                prioritized modularity and ease of iteration during controller tuning.</p>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col items-center gap-2">
+                    <img src="./assets/BallnBeam/CAD Model.png" alt="Ball and Beam CAD Diagram 1">
+                </div>
+                <div class="flex flex-col items-center gap-2 w-full">
+                    <img src="./assets/BallnBeam/CAD Model 2.png" alt="Ball and Beam CAD Diagram 2">
+                </div>
+            </div>
+            <p class="underline">System parameters</p>
+            <p>Bridge length: 0.23m <br />Ball used: Standard table tennis ball <br>Ball radius(R) = 0.02m<br>Ball
+                Inertia(J)
+                4.5x10^-6 Kgm^2 <br>Lever arm offset(d): 0.027m</p>
+            <p class="underline">Design criteria</p>
+            <p>Settling time < 5 seconds <br> Overshoot < 5%</p>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Modeling and Simulation
+                        </p>
+                        <p>The system dynamics were derived using the Lagrangian formulation, following established
+                            ball-and-beam models. Simulations were performed using GNU Octave to analyze system response
+                            and to obtain initial controller gains.
+
+                            The simulated model was used to determine values of Kp and Kd that satisfied the design
+                            objectives under ideal conditions.</p>
+                        <p>
+                            The following values were obtained for Kp and Kd with the following simulation results.
+                        </p>
+                        <div>
+                            <ul>
+                                <li>Kp=8</li>
+                                <li>Kd=25</li>
+                                <li>Mp=4.53%</li>
+                                <li>Ts=3.68s</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="./assets/BallnBeam/Simulation results.png" alt="Simulation results" class="w-1/3">
+                        </div>
+
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Controller Architecture</p>
+                        <p>A classical PID controller was implemented in discrete time on the Arduino Mega. The control
+                            loop operated in real time, incorporating sensor feedback and servo actuation.</p>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Experimental Implementation
+                            and Observations</p>
+
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Observation</p>
+                        <p>Simulation-derived gains were deployed on the physical system and refined through iterative
+                            tuning. Performance deviations from simulation were observed due to:</p>
+                        <ul>
+                            <li>Extremely low ball inertia, leading to high sensitivity</li>
+                            <li>Measurement noise from the ultrasonic sensor</li>
+                            <li>Mechanical dead zone and backlash in the servo motor</li>
+                        </ul>
+                        <p>Despite these non-idealities, stable control around the desired setpoint was achieved.</p>
+                        <div class="flex flex-col items-center justify-center">
+                            <img src="./assets/BallnBeam/Hardware.jpeg" alt="Physical Implementation" class="w-1/2">
+                            <iframe width="50%" height="500" src=https://youtu.be/stZAyTwcGHY title="Project Demo"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Results</p>
+                        <ul>
+                            <li>The effects of proportional, integral, and derivative gains on stability, overshoot, and
+                                settling time were clearly demonstrated.</li>
+                            <li>While the final response did not fully meet the original design specifications, the
+                                achieved behavior was acceptable given the system’s physical constraints.</li>
+                        </ul>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Conclusion</p>
+                        <p>This project strengthened practical understanding of feedback control and emphasized the gap
+                            between theoretical models and real-world systems. It highlighted the importance of sensor
+                            quality, actuator characteristics, and iterative tuning in embedded control applications.
+                        </p>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Further Work</p>
+                        <p>Future work will focus on improving sensing and state estimation to address measurement noise
+                            and unmodeled dynamics observed in the current system. This includes implementing
+                            observer-based approaches such as a Kalman filter or velocity observer, as well as
+                            performing system identification to obtain more accurate model parameters.
+
+                            Additional work includes compensating for actuator nonlinearities such as dead zones and
+                            saturation, and extending the control framework to multivariable systems with coupled
+                            dynamics, such as a Stewart platform. Improvements in sensing using camera-based position
+                            measurement would further enable higher control bandwidth and more systematic tuning and
+                            control design methodologies.</p>
+                        <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">References:</p>
+                        <a href="https://ctms.engin.umich.edu/CTMS/index.php?example=BallBeam&section=SystemModeling">
+                            <p>Controls Tutorials by Matlab and Simulink</p>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=JFTJ2SS4xyA">
+                            <p>PID Balance+Ball | full explanation & tuning</p>
+                        </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

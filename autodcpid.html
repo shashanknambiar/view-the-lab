@@ -28,15 +28,19 @@
         <div class="m-10 flex flex-col justify-center gap-3">
             <div class="flex gap-2">
                 <p class="text-2xl lg:text-4xl xl:text-6xl font-bold mb-4">Auto PID: DC Motor Position control</p>
-                <a href="https://github.com/shashanknambiar/PID_DC" target="_blank">
-                    <img src="assets/logos/git.png" alt="GitHub" class="w-8">
-                </a>
             </div>
 
             <p>This project implements a cascaded control system for a DC motor using a low-cost quadrature encoder. The
                 control architecture consists of a fast inner velocity loop and a slower outer position loop, with
                 automated tuning and noise mitigation strategies to ensure stable operation. The system can operate in
                 velocity control mode or position control mode, depending on the application.</p>
+                            <div class="flex gap-2 items-center">
+
+                <p class="text-base font-bold ">Repositry: </p>
+                <a href="https://github.com/shashanknambiar/PID_DC" target="_blank">
+                    <img src="assets/logos/git.png" alt="GitHub" class="w-8">
+                </a>
+            </div>
             <p class="text-2xl font-bold underline underline-offset-6 mt-2 mb-2">Hardware</p>
             <p>Atmega328p as the micro controller, Double BTS7960 H-Bridge Motor driver, an encoder with 12PPM and DC
                 motor that operates at 24V</p>
